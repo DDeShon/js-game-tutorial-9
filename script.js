@@ -7,10 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
   class Game {
     constructor() {
       this.enemies = [];
+      this.#addNewEnemy();
+      console.log(this.enemies);
     }
-    update() {}
-    draw() {}
-    #addNewEnemy() {}
+    update() {
+      this.enemies.forEach((object) => object.update());
+    }
+    draw() {
+      this.enemies.forEach((object) => object.draw());
+    }
+    #addNewEnemy() {
+      this.enemies.push(new Enemy());
+    }
   }
 
   class Enemy {
@@ -28,12 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  const game = new Game();
   let lastTime = 1;
   function animate(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
-
+    game.update();
+    game.draw();
     requestAnimationFrame(animate);
   }
 

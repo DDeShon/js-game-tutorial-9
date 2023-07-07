@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (this.enemyTimer > this.enemyInterval) {
         this.#addNewEnemy();
         this.enemyTimer = 0;
-        console.log(this.enemies);
+        // console.log(this.enemies);
       } else {
         this.enemyTimer += deltaTime;
       }

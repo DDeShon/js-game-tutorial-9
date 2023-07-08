@@ -74,6 +74,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  class Ghost extends Enemy {
+    constructor(game) {
+      super(game);
+      this.spriteWidth = 229;
+      this.spriteHeight = 171;
+      this.width = this.spriteWidth / 2;
+      this.height = this.spriteHeight / 2;
+      this.x = this.game.width;
+      this.y = Math.random() * this.game.height;
+      this.image = ghost;
+      this.xVelocity = Math.random() * 0.1 + 0.1;
+    }
+  }
+
   const game = new Game(ctx, canvas.width, canvas.height);
   let lastTime = 1;
   function animate(timeStamp) {

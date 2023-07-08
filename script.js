@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.width = width;
       this.height = height;
       this.enemies = [];
-      this.enemyInterval = 1000;
+      this.enemyInterval = 100;
       this.enemyTimer = 0;
     }
     update(deltaTime) {
@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     #addNewEnemy() {
       this.enemies.push(new Worm(this));
+      this.enemies.sort(function (a, b) {
+        return a.y - b.y;
+      });
     }
   }
 
@@ -38,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.markedForDeletion = false;
     }
     update(deltaTime) {
-      this.x -= this.speed;
+      this.x -= this.xVelocity * deltaTime;
       // remove enemies
       if (this.x < 0 - this.width) this.markedForDeletion = true;
     }
@@ -67,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.x = this.game.width;
       this.y = Math.random() * this.game.height;
       this.image = worm;
-      this.speed = Math.random() * 0.1 + 5;
+      this.xVelocity = Math.random() * 0.1 + 0.1;
     }
   }
 

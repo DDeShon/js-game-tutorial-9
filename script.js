@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         this.enemyTimer += deltaTime;
       }
-      this.enemies.forEach((object) => object.update());
+      this.enemies.forEach((object) => object.update(deltaTime));
     }
     draw() {
       this.enemies.forEach((object) => object.draw(this.ctx));
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.game = game;
       this.markedForDeletion = false;
     }
-    update() {
+    update(deltaTime) {
       this.x -= this.speed;
       // remove enemies
       if (this.x < 0 - this.width) this.markedForDeletion = true;

@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)];
       if (randomEnemy == "worm") this.enemies.push(new Worm(this));
       else if (randomEnemy == "ghost") this.enemies.push(new Ghost(this));
+      else if (randomEnemy == "spider") this.enemies.push(new Spider(this));
       // this.enemies.sort(function (a, b) {
       //   return a.y - b.y;
       // });
@@ -112,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.spriteHeight = 175;
       this.width = this.spriteWidth / 2;
       this.height = this.spriteHeight / 2;
-      this.x = this.game.width;
+      this.x = Math.random() * this.game.width;
       this.y = 0 - this.height;
       this.image = spider;
       this.xVelocity = 0;

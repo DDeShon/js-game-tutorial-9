@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (this.enemyTimer > this.enemyInterval) {
         this.#addNewEnemy();
         this.enemyTimer = 0;
-        // console.log(this.enemies);
+        console.log(this.enemies);
       } else {
         this.enemyTimer += deltaTime;
       }
@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     update(deltaTime) {
       super.update(deltaTime);
+      if (this.y < 0 - this.height * 2) this.markedForDeletion = true;
       this.y += this.yVelocity * deltaTime;
       if (this.y > this.maxLength) this.yVelocity *= -1;
     }

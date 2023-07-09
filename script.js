@@ -90,6 +90,12 @@ document.addEventListener("DOMContentLoaded", function () {
       this.image = ghost;
       this.xVelocity = Math.random() * 0.2 + 0.1;
     }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = 0.7;
+      super.draw(ctx);
+      ctx.restore();
+    }
   }
 
   const game = new Game(ctx, canvas.width, canvas.height);
